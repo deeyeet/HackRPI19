@@ -1,0 +1,148 @@
+.title
+{
+    text-align: center;
+    margin: auto;
+    width: 1260px;
+    font-family: Arial;
+    font-size: 60px;
+}
+
+.disaster-donation
+{
+    margin: auto;
+    text-align: center;
+    width: 1260px;
+    border-radius: 5px;
+}
+
+.disaster-list
+{
+    height: 150px;
+    display: flex;
+    flex-flow: row;
+    margin: auto;
+    justify-content: center;
+    align-content: center;
+    background-color: rgb(201, 218, 233);
+    border-left: 5px solid #008CBA;
+    margin-bottom: 10px;
+}
+
+.disaster-info
+{
+    position: relative;
+    text-align: center;
+    line-height: 150px;
+    width: 400px;
+    height: 50px;
+    font-family: Arial;
+    font-size: 20px;
+}
+
+.donate-button
+{
+    position: relative;
+    top: 50px;
+    height: 50px;
+
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
+.donate-button:hover
+{
+    background-color: orange;
+}
+
+.charity-donate
+{
+    position: relative;
+    text-align: center;
+    width: 400px;
+    height: 50px;
+    bottom: 20px;
+}
+
+.charities-section 
+{
+  position: relative;
+  top: 30px;
+  height: 50px;
+  text-align: center;
+  padding: 10px;
+  padding-top: 30px;
+  padding-bottom: 50px;
+}
+
+.charity-dropdwn
+{
+  display: block;
+}
+
+.charity-inp
+{
+  display: inline-block;
+}
+
+.charity
+{
+    min-width: 80px;
+    height: 30px;
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    cursor: pointer;
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 15px;
+    border-radius: 5px;
+}
+
+.charity:hover
+{
+    background-color: orange;
+}
+
+.dropdown
+{
+    display: block;
+    position: absolute;
+    z-index: 1;
+    min-width: 85px;
+    overflow: auto;
+    max-height: 100px;
+}
+
+.dropdown p
+{
+    margin: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-decoration: none;
+    display: block;
+    background-color: #f1f1f1;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    font-size: 12px;
+    font-family: Arial;
+    font-weight: bold;
+}
+
+.dropdown p:hover
+{
+    background-color: #ddd
+}

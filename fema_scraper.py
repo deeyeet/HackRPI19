@@ -2,15 +2,21 @@ import requests
 import urllib.request
 import urllib.error
 
+# def parseDate(dateString):
+#     if 
+
 url = "https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries?"
 select = "$select=state,declarationDate,incidentType,title,incidentBeginDate,incidentEndDate,disasterCloseOutDate,declaredCountyArea"
+orderby = "&$orderby=disasterCloseOutDate desc"
+
+url += select + orderby
+
 top = "&$top=10"
-orderby = "&$orderby=incidentBeginDate desc"
+incr = 0
 
-url += select
 url += top
-url += orderby
 
+# Contains all the data with no disasterCloseOutDate
 
 try:
     response = requests.get(url)
@@ -24,5 +30,11 @@ except Exception as err:
 else:
     print('Success!')
 
-d = response.json()
-print(d)
+# Contains ten results
+allData = response.json()
+
+# Filter out the metadata
+mainData = allData['DisasterDeclarationsSummaries']
+
+print(mainData)
+    

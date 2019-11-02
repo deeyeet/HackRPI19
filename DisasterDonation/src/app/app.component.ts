@@ -11,7 +11,7 @@ export class AppComponent {
   title = 'DisasterDonation';
   public disasterArray = [new Disaster];
   public charityDisplay: string = 'CHARITY';
-  public charityDisplayURL: string = '';
+  public charityDisplayURL: string = 'https://www.google.com/';
   public showCharities: boolean = false;
 
   public changeCharityButtonDisplay(charity: Charity): void {

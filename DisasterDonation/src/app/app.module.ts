@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { DisasterService } from './disaster.service';
+import { CharityService } from './charity.service';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,7 @@ import { DisasterService } from './disaster.service';
     BrowserModule,
     HttpClientModule
   ],
-  providers: [DisasterService],
+  providers: [DisasterService, CharityService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

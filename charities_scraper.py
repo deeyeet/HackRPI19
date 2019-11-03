@@ -45,7 +45,6 @@ raw_html = simple_get('https://www.uschamberfoundation.org/corporate-citizenship
 html = BeautifulSoup(raw_html, 'html.parser')
 for i, p in enumerate(html.select('tr')):
     print(i, p.text)
-
 # Get the links of various charitable organizations
 html_page = simple_get("https://www.uschamberfoundation.org/corporate-citizenship-center/descriptions-nonprofits-working-disasters")
 soup = BeautifulSoup(html_page)

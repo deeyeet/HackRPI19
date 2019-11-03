@@ -1,11 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-export interface Config {
-  metadata: any;
-  summaries: any;
-}
-
 @Injectable({
   providedIn: 'root'
 })
@@ -27,10 +22,8 @@ export class DisasterService {
     var filterDate: string = "&$filter=incidentBeginDate ge ";
 
     var currentYear: number = new Date().getFullYear();
-    console.log(currentYear);
     var fiveYearsBack: string = String(currentYear - 5);
     var dateParam: string = filterDate + "'" + fiveYearsBack + "-01-01T04:00:00.000z'";
-    console.log(dateParam);
 
 
     if (recent == "desc") {
@@ -61,9 +54,7 @@ export class DisasterService {
       url += orderby;
     }
 
-    console.log(url);
-
-    return this.http.get<Config>(url);
+    return this.http.get(url);
   }
 
 }

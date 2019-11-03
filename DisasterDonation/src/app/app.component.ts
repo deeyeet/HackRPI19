@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { Charity } from './charity.model';
 import { Disaster } from './disaster.model';
-import { DisasterService, Config } from './disaster.service';
-import { appendFileSync } from 'fs';
+import { DisasterService } from './disaster.service';
+import { CharityService } from './charity.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,8 @@ import { appendFileSync } from 'fs';
 
 export class AppComponent {
 
-  constructor(private disasterService: DisasterService) { }
+  constructor(private disasterService: DisasterService, 
+              private charityService: CharityService) { }
 
   public allStates = this.disasterService.states;
   public allFilters = this.disasterService.filters;
@@ -21,6 +22,8 @@ export class AppComponent {
 
   title = 'DisasterDonation';
   public disasterArray = [];
+  public charityMap: Map<string, Charity[]> = new Map();
+
   public charityDisplay: string = 'CHARITY';
   public charityDisplayURL: string = "";
 
@@ -102,6 +105,7 @@ export class AppComponent {
 
   public showConfig(): void {
     this.disasterArray = [];
+    this.charityMap.clear();
     var recent = '';
     var state = '';
     var disaster = '';
@@ -120,6 +124,7 @@ export class AppComponent {
         recent = "asce";
       }
     }
+
     this.disasterService.getConfig(recent, state, disaster)
       .subscribe((data: any) => {
           var disasters = data["DisasterDeclarationsSummaries"];
@@ -128,15 +133,65 @@ export class AppComponent {
             disasterObj.location = disasters[i]["state"];
             disasterObj.type = disasters[i]["incidentType"];
             this.disasterArray.push(disasterObj);
+            this.charityMap.set(disasterObj.location, []);
+            
+            // if (!this.charityMap.has(disasterObj.location)) {
+            //   this.charityMap.set(disasterObj.location, []);
+            //   console.log(disasterObj.location);
+            //   this.charityService.getConfig(disasterObj.location)
+            //     .subscribe((charityData: any) => {
+            //       var charities = charityData["data"];
+            //       for (let j in charities) {
+            //         var charityObj = new Charity;
+            //         charityObj.name = charities[j]["charityName"];
+            //         charityObj.url = charities[j]["donationUrl"];
+            //         this.charityMap.get(disasterObj.location).push(charityObj);
+            //         disasterObj.charities.push(charityObj);
+            //       }
+            //     });
+              
+            // } else {
+            //   var charities = this.charityMap.get(disasterObj.location);
+            //   for (let i in charities) {
+            //     disasterObj.charities.push(charities[i]);
+            //   }
+            // }
           }
-          
-      });
+    });
+    
+    this.charityConfig();
     
   }
 
-  // public stateDisplay: string = "STATE";
-  // public filterDisplay: string = "FILTER";
-  // public disasterDisplay: string = "DISASTER";
-  // public recentDisplay: string = "SORT BY";
+  public charityConfig(): void {
+    // for (let entry of this.charityMap.entries()) {
+    //   this.charityService.getConfig(entry[0])
+    //     .subscribe((charityData: any) => {
+    //       var charities = charityData["data"];
+    //       console.log("wha");
+    //       for (let j in charities) {
+    //         var charityObj = new Charity;
+    //         charityObj.name = charities[j]["charityName"];
+    //         charityObj.url = charities[j]["donationUrl"];
+    //         var arr = entry[1];
+    //         this.charityMap.set(entry[0], arr);
+    //       }
+    //   });
+    // }
+
+    // console.log(this.charityMap);
+
+    // for (let i in this.disasterArray) {
+    //   for (let j in this.charityMap.get(this.disasterArray[i].location)) {
+    //     this.disasterArray[i].charities.push(this.charityMap.get(this.disasterArray[i].location)[j]);
+    //   }
+    // } 
+    this.charityService.getConfig('NY')
+        .subscribe((charityData: any) => {
+          console.log(charityData);
+      });
+  }
+
+
 
 }

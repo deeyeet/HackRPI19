@@ -15,3 +15,6 @@ We used python programs to web scrape lists of disasters and some available char
 ## Challenges
 
 This was our first hackathon so we didn't have a lot of experience going in. We spent a lot of time researching how to use a web scraper and finding suitable websites to gather data from. We also spent time looking at how to create a functional website with angular.
+
+## Sources
+[Open Fema](https://www.fema.gov/openfema-api-documentation?fbclid=IwAR0K7jJEfTFHUAnZyCij8YnwCfhx_-hBwgUjcXLHRjbieYaJI_W2-Sy4aV8)

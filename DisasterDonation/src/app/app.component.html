@@ -1,11 +1,52 @@
 <div class=disaster-donation>
   <div class="title">DISASTER DONATION</div>
+  <button class="search-button" (click)="showConfig()">SEARCH</button>
+  <div class="charity-section">
+    <div class="charity-dropdwn">
+        <div class="charity-inp">
+            <button class="charity" (click)="displayFilters()">{{filterDisplay}}</button>
+            <div class="dropdown" *ngIf="showFilters">
+                <p *ngFor="let elem of allFilters" (click)="changeFilterDisplay(elem)">{{elem}}</p>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="charities-section" *ngIf="showStateDropdown">
+    <div class="charity-dropdwn">
+        <div class="charity-inp">
+            <button class="charity" (click)="displayStates()">{{stateDisplay}}</button>
+            <div class="dropdown" *ngIf="showStates">
+                <p *ngFor="let state of allStates" (click)="changeStateDisplay(state)">{{state}}</p>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="charities-section" *ngIf="showDisasterDropdown">
+    <div class="charity-dropdwn">
+        <div class="charity-inp">
+            <button class="charity" (click)="displayDisasters()">{{disasterDisplay}}</button>
+            <div class="dropdown" *ngIf="showDisasters">
+                <p *ngFor="let diz of allDisasters" (click)="changeDisasterDisplay(diz)">{{diz}}</p>
+            </div>
+        </div>
+    </div>
+  </div>
+  <div class="charities-section">
+    <div class="charity-dropdwn">
+        <div class="charity-inp">
+            <button class="charity" (click)="displayRecents()">{{recentDisplay}}</button>
+            <div class="dropdown" *ngIf="showRecents">
+                <p *ngFor="let rec of allRecents" (click)="changeRecentDisplay(rec)">{{rec}}</p>
+            </div>
+        </div>
+    </div>
+  </div>
   <div class="disaster-list" *ngFor="let disaster of disasterArray">
     <span class="disaster-info">
-      Troy, NY
+      Location: {{disaster.location}}
     </span>
     <span class="disaster-info">
-      Shirley Hurricane Category 10
+      Type: {{disaster.type}}
     </span>
     <div class="charity-donate">
       <span>
@@ -16,7 +57,7 @@
               <div class="charity-inp">
                   <button class="charity" (click)="displayCharity()">{{charityDisplay}}</button>
                   <div class="dropdown" *ngIf="showCharities">
-                      <p *ngFor="let charity of disaster.charities" (click)="changeCharityDisplay(charity)">{{charityDisplay}}</p>
+                      <p *ngFor="let charity of disaster.charities" (click)="changeCharityDisplay(charity)">{{charity.name}}</p>
                   </div>
               </div>
           </div>

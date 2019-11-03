@@ -1,20 +1,23 @@
 import requests
 import urllib.request
 import urllib.error
-
-# def parseDate(dateString):
-#     if 
+from datetime import datetime
 
 url = "https://www.fema.gov/api/open/v2/DisasterDeclarationsSummaries?"
 select = "$select=state,declarationDate,incidentType,title,incidentBeginDate,incidentEndDate,disasterCloseOutDate,declaredCountyArea"
-orderby = "&$orderby=disasterCloseOutDate desc"
+orderby = "&$orderby=declarationDate desc"
 
-url += select + orderby
+filterUrl = "&$filter=incidentBeginDate ge "
+currentYear = datetime.now().year
+fiveYearsBack = currentYear - 5
+filterUrl += "\'" + str(fiveYearsBack) + "-01-01T04:00:00.000z\'"
 
-top = "&$top=10"
-incr = 0
+url += select + orderby + filterUrl 
 
-url += top
+# top = "&$top=100"
+# incr = 0
+
+# url += top
 
 # Contains all the data with no disasterCloseOutDate
 

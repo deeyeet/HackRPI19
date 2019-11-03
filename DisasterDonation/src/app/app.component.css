@@ -39,6 +39,24 @@
     font-size: 20px;
 }
 
+.search-button
+{
+
+    background-color: #008CBA;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    -webkit-transition-duration: 0.4s;
+    transition-duration: 0.4s;
+    cursor: pointer;
+
+    font-family: Arial;
+    font-weight: bold;
+    font-size: 20px;
+    border-radius: 5px;
+}
+
 .donate-button
 {
     position: relative;

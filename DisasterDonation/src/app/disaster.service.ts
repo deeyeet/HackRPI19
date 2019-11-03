@@ -44,7 +44,7 @@ export class DisasterService {
     }
 
     if (type != "") {
-      filterDate = " and incidentType eq " + "'" + type + "' ";
+      filterType = " and incidentType eq " + "'" + type + "' ";
     }
 
     url += select + dateParam;

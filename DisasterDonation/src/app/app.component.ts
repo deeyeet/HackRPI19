@@ -101,6 +101,7 @@ export class AppComponent {
   }
 
   public showConfig(): void {
+    this.disasterArray = [];
     var recent = '';
     var state = '';
     var disaster = '';
@@ -119,13 +120,14 @@ export class AppComponent {
         recent = "asce";
       }
     }
-
     this.disasterService.getConfig(recent, state, disaster)
       .subscribe((data: any) => {
           var disasters = data["DisasterDeclarationsSummaries"];
           for (let i in disasters) {
-            var disaster: Disaster;
-            disaster.location
+            var disasterObj = new Disaster;
+            disasterObj.location = disasters[i]["state"];
+            disasterObj.type = disasters[i]["incidentType"];
+            this.disasterArray.push(disasterObj);
           }
           
       });
